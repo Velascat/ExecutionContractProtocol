@@ -2,17 +2,20 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "ExecutionRequest",
   "type": "object",
-  "required": ["schema_version", "contract_kind", "metadata", "task_id", "lane_decision_id", "scope"],
+  "required": ["schema_version", "contract_kind", "request_id", "proposal_id", "metadata", "lane_decision_id", "lane", "scope"],
   "properties": {
     "schema_version": {"const": "0.1"},
     "contract_kind": {"const": "execution_request"},
+    "request_id": {"type": "string"},
+    "proposal_id": {"type": "string"},
     "created_at": {"type": ["string", "null"], "format": "date-time"},
     "metadata": {"type": "object"},
-    "task_id": {"type": "string"},
     "lane_decision_id": {"type": "string"},
+    "lane": {"type": "string", "enum": ["coding_agent", "review_agent", "local_model", "hosted_model"]},
     "scope": {"type": "string"},
     "input_payload": {"type": "object"},
-    "constraints": {"type": "array", "items": {"type": "string"}}
+    "constraints": {"type": "array", "items": {"type": "string"}
+    }
   },
   "additionalProperties": false
 }

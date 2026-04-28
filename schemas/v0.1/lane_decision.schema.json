@@ -2,16 +2,17 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "LaneDecision",
   "type": "object",
-  "required": ["schema_version", "contract_kind", "metadata", "task_id", "lane"],
+  "required": ["schema_version", "contract_kind", "decision_id", "proposal_id", "metadata", "lane"],
   "properties": {
     "schema_version": {"const": "0.1"},
     "contract_kind": {"const": "lane_decision"},
+    "decision_id": {"type": "string"},
+    "proposal_id": {"type": "string"},
     "created_at": {"type": ["string", "null"], "format": "date-time"},
     "metadata": {"type": "object"},
-    "task_id": {"type": "string"},
     "lane": {"type": "string", "enum": ["coding_agent", "review_agent", "local_model", "hosted_model"]},
     "rationale": {"type": "string"},
-    "confidence": {"type": "number"},
+    "confidence": {"type": "number", "minimum": 0.0, "maximum": 1.0},
     "alternatives": {"type": "array", "items": {"type": "string", "enum": ["coding_agent", "review_agent", "local_model", "hosted_model"]}}
   },
   "additionalProperties": false

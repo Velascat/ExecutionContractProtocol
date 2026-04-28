@@ -18,6 +18,7 @@ class Artifact:
 @dataclass
 class ExecutionResult(BaseContract):
     contract_kind: str = "execution_result"
+    result_id: str = ""
     request_id: str = ""
     ok: bool = False
     status: ExecutionStatus = ExecutionStatus.PENDING

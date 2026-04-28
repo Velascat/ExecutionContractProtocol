@@ -9,7 +9,8 @@ from ecp.vocabulary.lane import LaneType
 @dataclass
 class LaneDecision(BaseContract):
     contract_kind: str = "lane_decision"
-    task_id: str = ""
+    decision_id: str = ""
+    proposal_id: str = ""
     lane: LaneType = LaneType.CODING_AGENT
     rationale: str = ""
     confidence: float = 1.0

@@ -1,8 +1,9 @@
 {
   "schema_version": "0.1",
   "contract_kind": "execution_result",
+  "result_id": "ers-001",
   "created_at": "2026-04-28T00:05:00Z",
-  "metadata": {"result_id": "ers-001"},
+  "metadata": {},
   "request_id": "erq-001",
   "ok": true,
   "status": "succeeded",

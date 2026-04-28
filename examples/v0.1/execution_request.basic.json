@@ -1,10 +1,12 @@
 {
   "schema_version": "0.1",
   "contract_kind": "execution_request",
+  "request_id": "erq-001",
+  "proposal_id": "tp-001",
   "created_at": "2026-04-28T00:02:00Z",
-  "metadata": {"request_id": "erq-001", "producer": "OperationsCenter"},
-  "task_id": "tp-001",
+  "metadata": {"producer": "OperationsCenter"},
   "lane_decision_id": "ld-001",
+  "lane": "coding_agent",
   "scope": "Generate release-note draft text only.",
   "input_payload": {"change_summary_uri": "s3://bucket/changes.md"},
   "constraints": ["plain markdown"]

@@ -2,15 +2,16 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "ExecutionResult",
   "type": "object",
-  "required": ["schema_version", "contract_kind", "metadata", "request_id", "ok", "status"],
+  "required": ["schema_version", "contract_kind", "result_id", "metadata", "request_id", "ok", "status"],
   "properties": {
     "schema_version": {"const": "0.1"},
     "contract_kind": {"const": "execution_result"},
+    "result_id": {"type": "string"},
     "created_at": {"type": ["string", "null"], "format": "date-time"},
     "metadata": {"type": "object"},
     "request_id": {"type": "string"},
     "ok": {"type": "boolean"},
-    "status": {"type": "string", "enum": ["pending", "running", "succeeded", "failed", "cancelled"]},
+    "status": {"type": "string", "enum": ["pending", "accepted", "running", "succeeded", "failed", "cancelled", "rejected", "timed_out"]},
     "artifacts": {
       "type": "array",
       "items": {

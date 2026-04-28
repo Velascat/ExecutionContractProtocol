@@ -2,10 +2,11 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "TaskProposal",
   "type": "object",
-  "required": ["schema_version", "contract_kind", "metadata", "title", "objective"],
+  "required": ["schema_version", "contract_kind", "proposal_id", "metadata", "title", "objective"],
   "properties": {
     "schema_version": {"const": "0.1"},
     "contract_kind": {"const": "task_proposal"},
+    "proposal_id": {"type": "string"},
     "created_at": {"type": ["string", "null"], "format": "date-time"},
     "metadata": {"type": "object"},
     "title": {"type": "string"},

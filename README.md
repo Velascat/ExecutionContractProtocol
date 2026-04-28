@@ -3,8 +3,8 @@
 Execution Contract Protocol is a **contract-only specification** that defines the shared language exchanged between:
 
 - **OperatorConsole** (entrypoint)
-- **SwitchBoard** (routing and lane selection)
-- **OperationsCenter** (execution orchestration)
+- **SwitchBoard** (lane selection boundary)
+- **OperationsCenter** (planning boundary, execution boundary, policy enforcement, and adapter dispatch)
 
 ECP defines **what systems say to each other**, not how they run.
 
@@ -40,15 +40,18 @@ ECP excludes implementation logic, including:
 - `ecp/vocabulary/`: canonical enums (`status`, `lane`, `artifact`).
 - `ecp/validation/`: schema loading and validation helper.
 - `schemas/v0.1/`: JSON Schemas for the four canonical contracts.
+  - `task_proposal.schema.json`
+  - `lane_decision.schema.json`
+  - `execution_request.schema.json`
+  - `execution_result.schema.json`
 - `examples/v0.1/`: minimal interoperable examples.
 - `docs/spec/v0.1.md`: versioned normative summary.
 
 ## Inter-system Relationship
 
-- OperatorConsole emits or captures `TaskProposal`.
-- SwitchBoard consumes `TaskProposal` and emits `LaneDecision`.
-- OperationsCenter consumes `TaskProposal` + `LaneDecision` and emits `ExecutionRequest`.
-- Execution systems return `ExecutionResult` for downstream consumption.
+- OperatorConsole emits or captures `TaskProposal` and `ExecutionResult`-shaped data.
+- SwitchBoard consumes `TaskProposal` and emits `LaneDecision` only.
+- OperationsCenter consumes `TaskProposal` + `LaneDecision`, builds `ExecutionRequest`, and consumes `ExecutionResult`.
 
 ## Versioning
 

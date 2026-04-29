@@ -24,7 +24,7 @@ You will receive an acknowledgment within 72 hours. We aim to release a fix with
 
 ## Scope
 
-CxRP is a **contract-only specification** (formerly known as *Execution Contract Protocol / ECP*). It defines schemas, vocabulary enums, and validation helpers — it does not execute work, route requests, or run subprocesses. The relevant security surface is therefore narrow:
+CxRP is a **contract-only specification**. It defines schemas, vocabulary enums, and validation helpers — it does not execute work, route requests, or run subprocesses. The relevant security surface is therefore narrow:
 
 - Schema-level ambiguities or under-constrained fields that allow unsafe payloads to validate
 - Validation helper bugs that cause valid-looking but malformed contracts to pass

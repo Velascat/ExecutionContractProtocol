@@ -2,7 +2,7 @@ from enum import Enum
 
 
 class LaneType(str, Enum):
-    """Canonical lane/backend vocabulary for ECP contracts."""
+    """Canonical lane/backend vocabulary for CxRP contracts."""
 
     CODING_AGENT = "coding_agent"
     REVIEW_AGENT = "review_agent"

@@ -34,7 +34,6 @@ cxrp/vocabulary/     # canonical enums (status, lane, artifact)
 cxrp/validation/     # schema loading and validation helpers
 cxrp/schemas/v0.2/   # JSON Schemas for the four canonical contracts (active)
 cxrp/schemas/v0.1/   # frozen prior revision
-ecp/                 # deprecation shim — re-exports from cxrp/, will be removed
 examples/v0.2/       # minimal interoperable example payloads
 docs/spec/           # versioned normative summaries
 tests/               # contract + schema validation tests

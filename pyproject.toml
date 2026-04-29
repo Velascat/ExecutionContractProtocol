@@ -17,13 +17,10 @@ dev = [
 ]
 
 [tool.setuptools.packages.find]
-include = ["cxrp*", "ecp*"]
+include = ["cxrp*"]
 
 [tool.setuptools.package-data]
 "cxrp.schemas" = ["**/*.json"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-filterwarnings = [
-  "ignore::DeprecationWarning:ecp.*",
-]

@@ -2,7 +2,7 @@ from enum import Enum
 
 
 class ExecutionStatus(str, Enum):
-    """Canonical execution status vocabulary for ECP contracts."""
+    """Canonical execution status vocabulary for CxRP contracts."""
 
     PENDING = "pending"
     ACCEPTED = "accepted"

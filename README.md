@@ -59,13 +59,12 @@ Current revision: **v0.2** (active). Frozen prior revision: **v0.1** (retained o
 - `cxrp/schemas/v0.1/`: frozen prior revision, retained for historical interop.
 - `examples/v0.2/`: minimal interoperable examples.
 - `docs/spec/v0.2.md`: versioned normative summary.
-- `docs/architecture/migration_from_ecp.md`: rename note (ECP → CxRP).
 
 ## Inter-system Relationship
 
 - OperatorConsole emits or captures `TaskProposal` and `ExecutionResult`-shaped data via `operator_console.ecp_capture`.
 - SwitchBoard consumes `TaskProposal` and emits `LaneDecision` only; the wire shape is produced by `switchboard.adapters.ecp_mapper`.
-- OperationsCenter consumes `TaskProposal` + `LaneDecision`, builds `ExecutionRequest`, and consumes `ExecutionResult`. OC has its own internal Pydantic subtype with stricter narrowing — `operations_center.contracts.ecp_mapper` translates between OC's subtype and the CxRP envelope at the boundary.
+- OperationsCenter consumes `TaskProposal` + `LaneDecision`, builds `ExecutionRequest`, and consumes `ExecutionResult`. OC has its own internal Pydantic subtype with stricter narrowing — `operations_center.contracts.cxrp_mapper` translates between OC's subtype and the CxRP envelope at the boundary.
 
 ### Subtype pattern
 
@@ -75,20 +74,8 @@ CxRP defines the **envelope**: identities, abstract `lane: LaneType` category, o
 
 All contracts include `schema_version = "0.2"` and `contract_kind` as canonical discriminators. v0.1 is frozen; breaking changes land under a new `cxrp/schemas/vX.Y/`.
 
-Contract kinds and schema filenames are **stable** across the rename and across versions:
+Contract kinds and schema filenames are **stable** across versions:
 
 ```
 task_proposal       lane_decision       execution_request       execution_result
-```
-
-## Migration from ECP
-
-The project was previously named **Execution Contract Protocol (ECP)**. CxRP is a pure rename — no contract kinds, classes, schema versions, or wire shapes were changed. A short-lived `ecp` import shim re-exports from `cxrp` and emits `DeprecationWarning`. See [docs/architecture/migration_from_ecp.md](docs/architecture/migration_from_ecp.md).
-
-```python
-# Old
-from ecp.contracts import LaneDecision   # still works, deprecated
-
-# New
-from cxrp.contracts import LaneDecision  # preferred
 ```

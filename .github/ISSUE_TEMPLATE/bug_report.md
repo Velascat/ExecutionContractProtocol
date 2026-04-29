@@ -11,10 +11,10 @@ A clear description of what is wrong.
 
 ## Affected Area
 
-- [ ] Contract model (`ecp/contracts/`)
-- [ ] Vocabulary enum (`ecp/vocabulary/`)
+- [ ] Contract model (`cxrp/contracts/`)
+- [ ] Vocabulary enum (`cxrp/vocabulary/`)
 - [ ] JSON Schema (`schemas/vX.Y/`)
-- [ ] Validation helper (`ecp/validation/`)
+- [ ] Validation helper (`cxrp/validation/`)
 - [ ] Example payload (`examples/`)
 - [ ] Documentation (`docs/spec/`)
 

@@ -43,7 +43,7 @@ What it does instead.
 ## Environment
 
 - Python version: 
-- ECP version / commit: 
+- CxRP version / commit: 
 - `jsonschema` version: 
 
 ## Additional Context

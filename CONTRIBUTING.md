@@ -1,6 +1,6 @@
-# Contributing to Execution Contract Protocol
+# Contributing to CxRP
 
-ECP is a **contract-only specification** defining the shared language exchanged between OperatorConsole, SwitchBoard, and OperationsCenter. It defines *what* systems say to each other, not *how* they run.
+CxRP is a **contract-only specification** defining the shared language exchanged between OperatorConsole, SwitchBoard, and OperationsCenter. It defines *what* systems say to each other, not *how* they run.
 
 ## Before You Start
 
@@ -29,18 +29,20 @@ PYTHONPATH=. .venv/bin/python -m pytest tests/ -v
 ## Project Structure
 
 ```
-ecp/contracts/      # Python contract models
-ecp/vocabulary/     # canonical enums (status, lane, artifact)
-ecp/validation/     # schema loading and validation helpers
-schemas/v0.1/       # JSON Schemas for the four canonical contracts
-examples/v0.1/      # minimal interoperable example payloads
-docs/spec/          # versioned normative summaries
-tests/              # contract + schema validation tests
+cxrp/contracts/      # Python contract models
+cxrp/vocabulary/     # canonical enums (status, lane, artifact)
+cxrp/validation/     # schema loading and validation helpers
+cxrp/schemas/v0.2/   # JSON Schemas for the four canonical contracts (active)
+cxrp/schemas/v0.1/   # frozen prior revision
+ecp/                 # deprecation shim — re-exports from cxrp/, will be removed
+examples/v0.2/       # minimal interoperable example payloads
+docs/spec/           # versioned normative summaries
+tests/               # contract + schema validation tests
 ```
 
 ## What Belongs Here
 
-ECP is the **contract layer only**. It must not contain:
+CxRP is the **contract layer only**. It must not contain:
 
 - Execution logic (belongs in OperationsCenter)
 - Routing or lane-selection logic (belongs in SwitchBoard)

@@ -3,8 +3,8 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Any
 
-from ecp.contracts.common import BaseContract
-from ecp.vocabulary.status import ExecutionStatus
+from cxrp.contracts.common import BaseContract
+from cxrp.vocabulary.status import ExecutionStatus
 
 
 @dataclass

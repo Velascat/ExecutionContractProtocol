@@ -3,7 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Any, Optional
 
-from ecp.contracts.common import BaseContract
+from cxrp.contracts.common import BaseContract
 
 
 @dataclass

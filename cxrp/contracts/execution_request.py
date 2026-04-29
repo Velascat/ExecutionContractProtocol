@@ -3,8 +3,8 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Any, Optional
 
-from ecp.contracts.common import BaseContract, ExecutionLimits
-from ecp.vocabulary.lane import LaneType
+from cxrp.contracts.common import BaseContract, ExecutionLimits
+from cxrp.vocabulary.lane import LaneType
 
 
 @dataclass

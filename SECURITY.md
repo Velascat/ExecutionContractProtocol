@@ -24,7 +24,7 @@ You will receive an acknowledgment within 72 hours. We aim to release a fix with
 
 ## Scope
 
-Execution Contract Protocol (ECP) is a **contract-only specification**. It defines schemas, vocabulary enums, and validation helpers — it does not execute work, route requests, or run subprocesses. The relevant security surface is therefore narrow:
+CxRP is a **contract-only specification** (formerly known as *Execution Contract Protocol / ECP*). It defines schemas, vocabulary enums, and validation helpers — it does not execute work, route requests, or run subprocesses. The relevant security surface is therefore narrow:
 
 - Schema-level ambiguities or under-constrained fields that allow unsafe payloads to validate
 - Validation helper bugs that cause valid-looking but malformed contracts to pass
@@ -35,4 +35,4 @@ Execution Contract Protocol (ECP) is a **contract-only specification**. It defin
 
 - Vulnerabilities in downstream consumers (OperatorConsole, SwitchBoard, OperationsCenter) — report those to the respective project
 - Vulnerabilities in `jsonschema` or other upstream dependencies — report upstream
-- Misuse of ECP contracts by an implementing system (e.g., trusting unvalidated input)
+- Misuse of CxRP contracts by an implementing system (e.g., trusting unvalidated input)

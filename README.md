@@ -1,23 +1,25 @@
-# Execution Contract Protocol (ECP)
+# CxRP — Contract × Request Protocol
 
-Execution Contract Protocol is a **contract-only specification** that defines the shared language exchanged between:
+> CxRP is a contract-only protocol for defining and executing structured work — describing AI/workflow request lifecycles across planning, lane selection, execution requests, and execution results.
+
+CxRP defines the shared language exchanged between:
 
 - **OperatorConsole** (entrypoint)
 - **SwitchBoard** (lane selection boundary)
 - **OperationsCenter** (planning boundary, execution boundary, policy enforcement, and adapter dispatch)
 
-ECP defines **what systems say to each other**, not how they run.
+CxRP defines **what systems say to each other**, not how they run.
 
-## What ECP Is
+## What CxRP Is
 
 - Versioned contract models.
 - Canonical vocabulary enums.
 - JSON Schemas for validation.
 - Example payloads for interoperable integration.
 
-## What ECP Is Not
+## What CxRP Is Not
 
-ECP excludes implementation logic, including:
+CxRP excludes implementation logic, including:
 
 - execution logic
 - routing logic
@@ -26,6 +28,11 @@ ECP excludes implementation logic, including:
 - model/provider integrations
 - adapters
 - queue systems
+- transport machinery (gRPC, FastAPI, Temporal, etc.)
+
+## Status
+
+Current revision: **v0.2** (active). Frozen prior revision: **v0.1** (retained on disk for historical interop).
 
 ## Core Contracts (v0.2)
 
@@ -40,29 +47,48 @@ ECP excludes implementation logic, including:
 
 ## Repository Layout
 
-- `ecp/contracts/`: Python contract models.
-- `ecp/vocabulary/`: canonical enums (`status`, `lane`, `artifact`).
-- `ecp/validation/`: schema loading and validation helper.
-- `ecp/schemas/v0.2/`: JSON Schemas for the four canonical contracts (shipped inside the installable package).
+- `cxrp/contracts/`: Python contract models.
+- `cxrp/vocabulary/`: canonical enums (`status`, `lane`, `artifact`).
+- `cxrp/validation/`: schema loading and validation helper.
+- `cxrp/schemas/v0.2/`: JSON Schemas for the four canonical contracts (shipped inside the installable package).
   - `task_proposal.schema.json`
   - `lane_decision.schema.json`
   - `execution_request.schema.json`
   - `execution_result.schema.json`
   - `payloads/`: per-lane payload schemas (e.g. `coding_agent_input.schema.json`).
-- `ecp/schemas/v0.1/`: frozen prior revision, retained for historical interop.
+- `cxrp/schemas/v0.1/`: frozen prior revision, retained for historical interop.
 - `examples/v0.2/`: minimal interoperable examples.
 - `docs/spec/v0.2.md`: versioned normative summary.
+- `docs/architecture/migration_from_ecp.md`: rename note (ECP → CxRP).
 
 ## Inter-system Relationship
 
 - OperatorConsole emits or captures `TaskProposal` and `ExecutionResult`-shaped data via `operator_console.ecp_capture`.
 - SwitchBoard consumes `TaskProposal` and emits `LaneDecision` only; the wire shape is produced by `switchboard.adapters.ecp_mapper`.
-- OperationsCenter consumes `TaskProposal` + `LaneDecision`, builds `ExecutionRequest`, and consumes `ExecutionResult`. OC has its own internal Pydantic subtype with stricter narrowing — `operations_center.contracts.ecp_mapper` translates between OC's subtype and the ECP envelope at the boundary.
+- OperationsCenter consumes `TaskProposal` + `LaneDecision`, builds `ExecutionRequest`, and consumes `ExecutionResult`. OC has its own internal Pydantic subtype with stricter narrowing — `operations_center.contracts.ecp_mapper` translates between OC's subtype and the CxRP envelope at the boundary.
 
 ### Subtype pattern
 
-ECP defines the **envelope**: identities, abstract `lane: LaneType` category, open-string `executor`/`backend`, free-form `input_payload` keyed by a lane-specific payload schema. Consumer repos (notably OC) layer their own typed `Literal`/Pydantic constraints internally without changing the wire contract. Cross-repo communication uses ECP shape; intra-repo code is free to use richer types as long as it maps to/from ECP at the wire.
+CxRP defines the **envelope**: identities, abstract `lane: LaneType` category, open-string `executor`/`backend`, free-form `input_payload` keyed by a lane-specific payload schema. Consumer repos (notably OC) layer their own typed `Literal`/Pydantic constraints internally without changing the wire contract. Cross-repo communication uses CxRP shape; intra-repo code is free to use richer types as long as it maps to/from CxRP at the wire.
 
 ## Versioning
 
-All contracts include `schema_version = "0.2"` and `contract_kind` as canonical discriminators. v0.1 is frozen; breaking changes land under a new `ecp/schemas/vX.Y/`.
+All contracts include `schema_version = "0.2"` and `contract_kind` as canonical discriminators. v0.1 is frozen; breaking changes land under a new `cxrp/schemas/vX.Y/`.
+
+Contract kinds and schema filenames are **stable** across the rename and across versions:
+
+```
+task_proposal       lane_decision       execution_request       execution_result
+```
+
+## Migration from ECP
+
+The project was previously named **Execution Contract Protocol (ECP)**. CxRP is a pure rename — no contract kinds, classes, schema versions, or wire shapes were changed. A short-lived `ecp` import shim re-exports from `cxrp` and emits `DeprecationWarning`. See [docs/architecture/migration_from_ecp.md](docs/architecture/migration_from_ecp.md).
+
+```python
+# Old
+from ecp.contracts import LaneDecision   # still works, deprecated
+
+# New
+from cxrp.contracts import LaneDecision  # preferred
+```

@@ -1,14 +1,5 @@
-from enum import Enum
+"""Compatibility shim. See `ecp.__init__` for details."""
 
+from cxrp.vocabulary.status import ExecutionStatus
 
-class ExecutionStatus(str, Enum):
-    """Canonical execution status vocabulary for ECP contracts."""
-
-    PENDING = "pending"
-    ACCEPTED = "accepted"
-    RUNNING = "running"
-    SUCCEEDED = "succeeded"
-    FAILED = "failed"
-    CANCELLED = "cancelled"
-    REJECTED = "rejected"
-    TIMED_OUT = "timed_out"
+__all__ = ["ExecutionStatus"]

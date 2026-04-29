@@ -46,7 +46,7 @@ Other shapes you thought about and why you ruled them out.
 
 ## Scope Check
 
-Confirm this belongs in ECP (contract layer) rather than:
+Confirm this belongs in CxRP (contract layer) rather than:
 
 - [ ] OperationsCenter (planning / execution / adapters)
 - [ ] SwitchBoard (routing / lane selection logic)

@@ -5,7 +5,7 @@ from pathlib import Path
 import pytest
 from jsonschema import ValidationError
 
-from ecp.contracts import (
+from cxrp.contracts import (
     Artifact,
     ExecutionLimits,
     ExecutionRequest,
@@ -14,16 +14,16 @@ from ecp.contracts import (
     LaneDecision,
     TaskProposal,
 )
-from ecp.validation.json_schema import (
+from cxrp.validation.json_schema import (
     SCHEMA_FILE_MAP,
     load_payload_schema,
     load_schema,
     validate_contract,
     validate_payload,
 )
-from ecp.vocabulary.artifact import ArtifactKind
-from ecp.vocabulary.lane import LaneType
-from ecp.vocabulary.status import ExecutionStatus
+from cxrp.vocabulary.artifact import ArtifactKind
+from cxrp.vocabulary.lane import LaneType
+from cxrp.vocabulary.status import ExecutionStatus
 
 EXAMPLES_DIR = Path("examples/v0.2")
 
@@ -145,7 +145,7 @@ def test_schema_filenames_follow_documented_convention():
         "execution_request.schema.json",
         "execution_result.schema.json",
     }
-    found = {path.name for path in Path("ecp/schemas/v0.2").glob("*.json")}
+    found = {path.name for path in Path("cxrp/schemas/v0.2").glob("*.json")}
     assert found == expected
     assert set(SCHEMA_FILE_MAP.values()) == expected
 
@@ -181,6 +181,6 @@ def test_payload_schema_id_is_rejected_when_malformed():
 
 
 def test_v01_schemas_are_frozen_and_still_present():
-    v01 = Path("ecp/schemas/v0.1")
+    v01 = Path("cxrp/schemas/v0.1")
     assert v01.is_dir(), "v0.1 schemas must remain frozen on disk"
     assert (v01 / "task_proposal.schema.json").exists()

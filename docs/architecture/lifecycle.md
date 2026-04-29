@@ -7,4 +7,4 @@ Typical flow:
 3. OperationsCenter builds `ExecutionRequest`.
 4. Execution systems return `ExecutionResult`.
 
-ECP standardizes the payloads exchanged at each step; it does not define runtime control flow.
+CxRP standardizes the payloads exchanged at each step; it does not define runtime control flow.

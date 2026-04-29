@@ -1,15 +1,5 @@
-from enum import Enum
+"""Compatibility shim. See `ecp.__init__` for details."""
 
+from cxrp.vocabulary.artifact import ArtifactKind
 
-class ArtifactKind(str, Enum):
-    """Canonical artifact-kind vocabulary for ExecutionResult payloads.
-
-    Artifact.kind on the wire is an open string — consumers may register
-    their own kinds. These values are the well-known canonical kinds ECP
-    guarantees universal meaning for.
-    """
-
-    INPUT = "input"
-    OUTPUT = "output"
-    LOG = "log"
-    DIAGNOSTIC = "diagnostic"
+__all__ = ["ArtifactKind"]

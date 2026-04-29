@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CodingAgentInput",
+  "description": "Well-known payload schema for ExecutionRequest.input_payload on the coding_agent lane.",
+  "type": "object",
+  "required": ["goal_text", "repo_key", "base_branch"],
+  "properties": {
+    "goal_text": {"type": "string"},
+    "constraints_text": {"type": ["string", "null"]},
+    "repo_key": {"type": "string"},
+    "clone_url": {"type": ["string", "null"]},
+    "base_branch": {"type": "string"},
+    "task_branch": {"type": ["string", "null"]},
+    "workspace_path": {"type": ["string", "null"]},
+    "goal_file_path": {"type": ["string", "null"]},
+    "allowed_paths": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "validation_commands": {
+      "type": "array",
+      "items": {"type": "string"}
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,18 @@
+{
+  "schema_version": "0.2",
+  "contract_kind": "execution_result",
+  "result_id": "ers-001",
+  "created_at": "2026-04-28T00:05:00Z",
+  "metadata": {"executor": "claude_cli", "backend": "kodo"},
+  "request_id": "erq-001",
+  "ok": true,
+  "status": "succeeded",
+  "artifacts": [
+    {"kind": "diff", "uri": "file:///var/oc/workspaces/erq-001/changes.diff", "description": "patch produced by claude_cli"},
+    {"kind": "branch_ref", "uri": "git:///fix/user-serializer-null-email"},
+    {"kind": "pr_url", "uri": "https://github.com/Velascat/api-service/pull/482"},
+    {"kind": "validation_report", "uri": "file:///var/oc/workspaces/erq-001/validation.json"},
+    {"kind": "log", "uri": "file:///var/oc/workspaces/erq-001/run.log"}
+  ],
+  "diagnostics": {"duration_seconds": 278, "changed_files": 2, "validation_status": "passed"}
+}

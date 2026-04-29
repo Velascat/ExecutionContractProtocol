@@ -1,0 +1,20 @@
+{
+  "schema_version": "0.2",
+  "contract_kind": "task_proposal",
+  "proposal_id": "tp-001",
+  "created_at": "2026-04-28T00:00:00Z",
+  "metadata": {"producer": "OperationsCenter"},
+  "title": "Fix null-deref in user serializer",
+  "objective": "Guard User.email access in UserSerializer; add a regression test.",
+  "task_type": "bug_fix",
+  "execution_mode": "goal",
+  "priority": "normal",
+  "risk_level": "low",
+  "target": {
+    "repo_key": "velascat/api-service",
+    "clone_url": "https://github.com/Velascat/api-service.git",
+    "base_branch": "main"
+  },
+  "constraints": ["do not modify migrations", "preserve existing public API"],
+  "requested_inputs": {}
+}

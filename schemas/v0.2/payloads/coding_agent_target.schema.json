@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CodingAgentTarget",
+  "description": "Well-known payload schema for TaskProposal.target on the coding_agent lane.",
+  "type": "object",
+  "required": ["repo_key", "base_branch"],
+  "properties": {
+    "repo_key": {"type": "string"},
+    "clone_url": {"type": "string"},
+    "base_branch": {"type": "string"}
+  },
+  "additionalProperties": true
+}

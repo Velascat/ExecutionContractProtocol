@@ -4,15 +4,15 @@ from dataclasses import dataclass, field
 from typing import Any
 
 from ecp.contracts.common import BaseContract
-from ecp.vocabulary.artifact import ArtifactType
 from ecp.vocabulary.status import ExecutionStatus
 
 
 @dataclass
 class Artifact:
-    artifact_type: ArtifactType
-    uri: str
+    kind: str = ""
+    uri: str = ""
     description: str = ""
+    metadata: dict[str, Any] = field(default_factory=dict)
 
 
 @dataclass

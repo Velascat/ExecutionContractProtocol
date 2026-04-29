@@ -1,0 +1,32 @@
+{
+  "schema_version": "0.2",
+  "contract_kind": "execution_request",
+  "request_id": "erq-001",
+  "proposal_id": "tp-001",
+  "created_at": "2026-04-28T00:02:00Z",
+  "metadata": {"producer": "OperationsCenter"},
+  "lane_decision_id": "ld-001",
+  "lane": "coding_agent",
+  "executor": "claude_cli",
+  "backend": "kodo",
+  "scope": "Fix null-deref in user serializer.",
+  "input_payload": {
+    "goal_text": "Guard User.email access in UserSerializer; add a regression test.",
+    "constraints_text": "do not modify migrations; preserve existing public API",
+    "repo_key": "velascat/api-service",
+    "clone_url": "https://github.com/Velascat/api-service.git",
+    "base_branch": "main",
+    "task_branch": "fix/user-serializer-null-email",
+    "workspace_path": "/var/oc/workspaces/erq-001",
+    "goal_file_path": "/var/oc/workspaces/erq-001/.goal.md",
+    "allowed_paths": ["src/**", "tests/**"],
+    "validation_commands": ["pytest -q", "ruff check ."]
+  },
+  "input_payload_schema": "coding_agent_input/v0.2",
+  "constraints": ["do not modify migrations"],
+  "limits": {
+    "max_changed_files": 25,
+    "timeout_seconds": 600,
+    "require_clean_validation": true
+  }
+}

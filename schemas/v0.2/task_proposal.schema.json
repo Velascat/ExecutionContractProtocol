@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TaskProposal",
+  "type": "object",
+  "required": ["schema_version", "contract_kind", "proposal_id", "metadata", "title", "objective"],
+  "properties": {
+    "schema_version": {"const": "0.2"},
+    "contract_kind": {"const": "task_proposal"},
+    "proposal_id": {"type": "string"},
+    "created_at": {"type": ["string", "null"], "format": "date-time"},
+    "metadata": {"type": "object"},
+    "title": {"type": "string"},
+    "objective": {"type": "string"},
+    "task_type": {"type": ["string", "null"]},
+    "execution_mode": {"type": ["string", "null"]},
+    "priority": {"type": ["string", "null"]},
+    "risk_level": {"type": ["string", "null"]},
+    "target": {"type": ["object", "null"]},
+    "constraints": {"type": "array", "items": {"type": "string"}},
+    "requested_inputs": {"type": "object"}
+  },
+  "additionalProperties": false
+}

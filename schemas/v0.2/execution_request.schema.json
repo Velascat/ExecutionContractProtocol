@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ExecutionRequest",
+  "type": "object",
+  "required": ["schema_version", "contract_kind", "request_id", "proposal_id", "metadata", "lane_decision_id", "lane", "scope"],
+  "properties": {
+    "schema_version": {"const": "0.2"},
+    "contract_kind": {"const": "execution_request"},
+    "request_id": {"type": "string"},
+    "proposal_id": {"type": "string"},
+    "created_at": {"type": ["string", "null"], "format": "date-time"},
+    "metadata": {"type": "object"},
+    "lane_decision_id": {"type": "string"},
+    "lane": {"type": "string", "enum": ["coding_agent", "review_agent", "local_model", "hosted_model"]},
+    "executor": {"type": ["string", "null"]},
+    "backend": {"type": ["string", "null"]},
+    "scope": {"type": "string"},
+    "input_payload": {"type": "object"},
+    "input_payload_schema": {"type": ["string", "null"]},
+    "constraints": {"type": "array", "items": {"type": "string"}},
+    "limits": {
+      "type": ["object", "null"],
+      "properties": {
+        "max_changed_files": {"type": ["integer", "null"], "minimum": 0},
+        "timeout_seconds": {"type": ["integer", "null"], "minimum": 0},
+        "require_clean_validation": {"type": ["boolean", "null"]}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

@@ -6,6 +6,26 @@ tests_root: tests
 # Add `plugins:` and `detectors:` here when this repo grows its own
 # `_custodian/` overlay layer (see OperationsCenter for a worked example).
 
+audit:
+  # F1 exemptions: these fields are in nested contract dataclasses (Artifact,
+  # LaneAlternative, ExecutionLimits) that lack their own to_dict() but are
+  # recursively serialized via asdict() from their parent BaseContract subclass.
+  # All are part of the JSON schema and are not dead fields.
+  f1_exempt:
+    - description
+    - max_changed_files
+    - metadata
+    - reason
+    - require_clean_validation
+
+  exclude_paths:
+    T2:
+      # These tests validate that valid payloads pass JSON schema validation.
+      # validate_contract() / validate_payload() return None and raise ValidationError
+      # on failure — "should not raise" tests are correctly assertion-free.
+      - tests/test_contracts.py
+
+
 tools:
   ruff: true
   vulture: true

@@ -6,6 +6,7 @@ from dataclasses import dataclass, field
 from typing import Any, Optional
 
 from cxrp.contracts.common import BaseContract, ExecutionLimits
+from cxrp.contracts.runtime_binding import RuntimeBinding
 from cxrp.vocabulary.lane import LaneType
 
 
@@ -23,3 +24,4 @@ class ExecutionRequest(BaseContract):
     input_payload_schema: Optional[str] = None
     constraints: list[str] = field(default_factory=list)
     limits: Optional[ExecutionLimits] = None
+    runtime_binding: Optional[RuntimeBinding] = None

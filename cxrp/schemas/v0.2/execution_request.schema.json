@@ -26,6 +26,24 @@
         "require_clean_validation": {"type": ["boolean", "null"]}
       },
       "additionalProperties": false
+    },
+    "runtime_binding": {
+      "type": ["object", "null"],
+      "properties": {
+        "kind": {"type": "string", "enum": [
+          "backend_default", "cli_subscription", "local_model_server",
+          "hosted_api", "containerized_runtime", "human"
+        ]},
+        "selection_mode": {"type": "string", "enum": [
+          "backend_default", "policy_selected", "explicit_request"
+        ]},
+        "model": {"type": ["string", "null"]},
+        "provider": {"type": ["string", "null"]},
+        "endpoint": {"type": ["string", "null"]},
+        "config_ref": {"type": ["string", "null"]}
+      },
+      "required": ["kind", "selection_mode"],
+      "additionalProperties": false
     }
   },
   "additionalProperties": false

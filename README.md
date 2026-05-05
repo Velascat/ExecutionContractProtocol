@@ -80,6 +80,18 @@ Contract kinds and schema filenames are **stable** across versions:
 task_proposal       lane_decision       execution_request       execution_result
 ```
 
+## Contract Evolution Policy
+
+CxRP contracts evolve under the following rules:
+
+- **Additive fields are non-breaking.** Adding a new optional field within a schema version (e.g. `0.2 → 0.2.1`) does not require a `schema_version` bump.
+- **Renames and removals require a `schema_version` bump.** They land under a new `cxrp/schemas/vX.Y/` directory; the previous version is frozen on disk for historical interop.
+- **Capability removals require a deprecation cycle.** A capability removed from `CapabilitySet` must first be marked deprecated for one release/version window, then removed in the next.
+- **Producers may add fields only when the schema permits them.** Top-level contracts use `additionalProperties: false` and reject unknown fields; the designated extension slot is `evidence.extensions` (open `dict[str, Any]`).
+- **Consumers must reject unknown fields** unless the schema explicitly allows extension. This keeps drift detectable rather than silent.
+
+`evidence.extensions` is the single sanctioned escape valve for backend-specific evidence that does not fit the normalized fields. Anything else outside the schema is a contract violation.
+
 ## License
 
 Apache License 2.0 (Apache-2.0) — see [LICENSE](LICENSE).

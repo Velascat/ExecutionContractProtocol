@@ -12,6 +12,7 @@
     "request_id": {"type": "string"},
     "ok": {"type": "boolean"},
     "status": {"type": "string", "enum": ["pending", "accepted", "running", "succeeded", "failed", "cancelled", "rejected", "timed_out"]},
+    "summary": {"type": "string"},
     "artifacts": {
       "type": "array",
       "items": {
@@ -26,7 +27,19 @@
         "additionalProperties": false
       }
     },
-    "diagnostics": {"type": "object"}
+    "diagnostics": {"type": "object"},
+    "evidence": {
+      "type": "object",
+      "properties": {
+        "files_changed":     {"type": "array", "items": {"type": "string"}},
+        "commands_run":      {"type": "array", "items": {"type": "string"}},
+        "tests_run":         {"type": "array", "items": {"type": "string"}},
+        "artifacts_created": {"type": "array", "items": {"type": "string"}},
+        "failure_reason":    {"type": ["string", "null"]},
+        "extensions":        {"type": "object"}
+      },
+      "additionalProperties": false
+    }
   },
   "additionalProperties": false
 }

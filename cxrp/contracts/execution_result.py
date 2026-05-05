@@ -6,6 +6,7 @@ from dataclasses import dataclass, field
 from typing import Any
 
 from cxrp.contracts.common import BaseContract
+from cxrp.contracts.evidence import Evidence
 from cxrp.vocabulary.status import ExecutionStatus
 
 
@@ -24,5 +25,7 @@ class ExecutionResult(BaseContract):
     request_id: str = ""
     ok: bool = False
     status: ExecutionStatus = ExecutionStatus.PENDING
+    summary: str = ""
     artifacts: list[Artifact] = field(default_factory=list)
     diagnostics: dict[str, Any] = field(default_factory=dict)
+    evidence: Evidence = field(default_factory=Evidence)

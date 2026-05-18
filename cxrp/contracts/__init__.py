@@ -8,9 +8,11 @@ from cxrp.contracts.execution_target import ExecutionTargetEnvelope
 from cxrp.contracts.lane_decision import LaneAlternative, LaneDecision
 from cxrp.contracts.runtime_binding import RuntimeBinding
 from cxrp.contracts.task_proposal import TaskProposal
+from cxrp.vocabulary.agent_topology import AgentTopology
 from cxrp.vocabulary.executor import BackendName, ExecutorName
 
 __all__ = [
+    "AgentTopology",
     "Artifact",
     "BackendName",
     "Evidence",

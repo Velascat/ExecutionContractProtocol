@@ -20,17 +20,20 @@ from enum import Enum
 class ExecutorName(str, Enum):
     """Canonical executor names. Producers must use one of these."""
 
-    CLAUDE_CLI  = "claude_cli"
-    CODEX_CLI   = "codex_cli"
-    AIDER_LOCAL = "aider_local"
+    CLAUDE_CLI       = "claude_cli"
+    CODEX_CLI        = "codex_cli"
+    AIDER_LOCAL      = "aider_local"
+    TEAM_EXECUTOR    = "team_executor"
+    DAG_EXECUTOR     = "dag_executor"
+    CRITIQUE_EXECUTOR = "critique_executor"
 
 
 class BackendName(str, Enum):
     """Canonical backend names. Producers must use one of these."""
 
-    DIRECT_LOCAL     = "direct_local"
-    AIDER_LOCAL      = "aider_local"
-    KODO             = "kodo"
-    ARCHON           = "archon"
-    ARCHON_THEN_KODO = "archon_then_kodo"
-    OPENCLAW         = "openclaw"
+    DIRECT_LOCAL      = "direct_local"
+    AIDER_LOCAL       = "aider_local"
+    OPENCLAW          = "openclaw"
+    TEAM_EXECUTOR     = "team_executor"
+    DAG_EXECUTOR      = "dag_executor"
+    CRITIQUE_EXECUTOR = "critique_executor"

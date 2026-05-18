@@ -38,7 +38,7 @@ def test_models_import_and_construct():
         proposal_id="tp-1",
         lane=LaneType.CODING_AGENT,
         executor=ExecutorName.CLAUDE_CLI,
-        backend=BackendName.KODO,
+        backend=BackendName.TEAM_EXECUTOR,
         alternatives=[
             LaneAlternative(lane=LaneType.CODING_AGENT, executor=ExecutorName.CODEX_CLI, confidence=0.4)
         ],

@@ -3,6 +3,8 @@
 _Chronological continuity log. Decisions, stop points, what changed and why._
 _Not a task tracker — that's backlog.md. Keep entries concise and dated._
 
+- 2026-05-18 — v0.3.1 patch: JSON schemas for v0.3 updated to reflect BackendName/ExecutorName changes from v0.3.0 (kodo/archon removed, team_executor/dag_executor/critique_executor added). Examples updated. 75 tests passing.
+
 - 2026-05-18 — ADR 0005 Phase 0: `AgentTopology` enum added (`single_agent`, `sequential`, `team`, `dag`, `adversarial`, `reflexion`); `BackendName`/`ExecutorName` updated (kodo/archon/archon_then_kodo removed, team_executor/dag_executor/critique_executor added); version bumped 0.2.0 → 0.3.0; 75 tests passing. Branch: `feat/agent-topology-executor-vocab`.
 
 - 2026-05-12 — RepoGraph boundary artifact wiring tightened to file-only: the

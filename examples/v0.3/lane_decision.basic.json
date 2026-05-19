@@ -7,7 +7,7 @@
   "metadata": {"policy_rule_matched": "bugfix-low-risk", "policy_version": "2026.04.28"},
   "lane": "coding_agent",
   "executor": "claude_cli",
-  "backend": "kodo",
+  "backend": "team_executor",
   "rationale": "task_type=bug_fix + risk=low routed to claude_cli via kodo.",
   "confidence": 0.92,
   "alternatives": [

@@ -11,8 +11,8 @@
     "created_at": {"type": ["string", "null"], "format": "date-time"},
     "metadata": {"type": "object"},
     "lane": {"type": "string", "enum": ["coding_agent", "review_agent", "local_model", "hosted_model", "aider_local"]},
-    "executor": {"type": ["string", "null"], "enum": ["claude_cli", "codex_cli", "aider_local", null]},
-    "backend": {"type": ["string", "null"], "enum": ["direct_local", "aider_local", "kodo", "archon", "archon_then_kodo", "openclaw", null]},
+    "executor": {"type": ["string", "null"], "enum": ["claude_cli", "codex_cli", "aider_local", "team_executor", "dag_executor", "critique_executor", null]},
+    "backend": {"type": ["string", "null"], "enum": ["direct_local", "aider_local", "team_executor", "dag_executor", "critique_executor", "openclaw", null]},
     "rationale": {"type": "string"},
     "confidence": {"type": "number", "minimum": 0.0, "maximum": 1.0},
     "alternatives": {
@@ -22,8 +22,8 @@
         "required": ["lane"],
         "properties": {
           "lane": {"type": "string", "enum": ["coding_agent", "review_agent", "local_model", "hosted_model", "aider_local"]},
-          "executor": {"type": ["string", "null"], "enum": ["claude_cli", "codex_cli", "aider_local", null]},
-          "backend": {"type": ["string", "null"], "enum": ["direct_local", "aider_local", "kodo", "archon", "archon_then_kodo", "openclaw", null]},
+          "executor": {"type": ["string", "null"], "enum": ["claude_cli", "codex_cli", "aider_local", "team_executor", "dag_executor", "critique_executor", null]},
+          "backend": {"type": ["string", "null"], "enum": ["direct_local", "aider_local", "team_executor", "dag_executor", "critique_executor", "openclaw", null]},
           "confidence": {"type": "number", "minimum": 0.0, "maximum": 1.0},
           "reason": {"type": "string"}
         },
@@ -34,8 +34,8 @@
       "type": ["object", "null"],
       "properties": {
         "lane": {"type": "string", "enum": ["coding_agent", "review_agent", "local_model", "hosted_model", "aider_local"]},
-        "backend": {"type": ["string", "null"], "enum": ["direct_local", "aider_local", "kodo", "archon", "archon_then_kodo", "openclaw", null]},
-        "executor": {"type": ["string", "null"], "enum": ["claude_cli", "codex_cli", "aider_local", null]},
+        "backend": {"type": ["string", "null"], "enum": ["direct_local", "aider_local", "team_executor", "dag_executor", "critique_executor", "openclaw", null]},
+        "executor": {"type": ["string", "null"], "enum": ["claude_cli", "codex_cli", "aider_local", "team_executor", "dag_executor", "critique_executor", null]},
         "runtime_binding": {"type": ["object", "null"]}
       },
       "required": ["lane"],

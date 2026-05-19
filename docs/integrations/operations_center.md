@@ -9,7 +9,7 @@ across the orchestration lifecycle.
 |---|---|---|
 | Inbound (from operator/agents) | `TaskProposal` | `console run`, autonomy loop, intake watcher |
 | Inbound (from SwitchBoard) | `LaneDecision` | `LaneSelector.select()` over HTTP |
-| Outbound (to ExecutorRuntime) | `ExecutionRequest` | `ExecutionCoordinator.execute()` |
+| Outbound (to CoreRunner) | `ExecutionRequest` | `ExecutionCoordinator.execute()` |
 | Outbound (return) | `ExecutionResult` | retained as `ExecutionRecord` |
 
 ## Mapping pattern

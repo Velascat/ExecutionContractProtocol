@@ -48,8 +48,8 @@ def test_evidence_serializes_to_dict_under_result():
 
 
 def test_evidence_extensions_is_open_dict():
-    payload = _result(extensions={"archon_workflow_id": "wf-42", "internal_trace": [1, 2]})
-    assert payload["evidence"]["extensions"]["archon_workflow_id"] == "wf-42"
+    payload = _result(extensions={"dag_executor_workflow_id": "wf-42", "internal_trace": [1, 2]})
+    assert payload["evidence"]["extensions"]["dag_executor_workflow_id"] == "wf-42"
     assert payload["evidence"]["extensions"]["internal_trace"] == [1, 2]
     validate_contract("execution_result", payload)
 

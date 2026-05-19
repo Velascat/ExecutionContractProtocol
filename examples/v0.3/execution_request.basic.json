@@ -8,7 +8,7 @@
   "lane_decision_id": "ld-001",
   "lane": "coding_agent",
   "executor": "claude_cli",
-  "backend": "kodo",
+  "backend": "team_executor",
   "scope": "Fix null-deref in user serializer.",
   "input_payload": {
     "goal_text": "Guard User.email access in UserSerializer; add a regression test.",

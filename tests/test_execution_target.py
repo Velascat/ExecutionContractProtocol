@@ -31,10 +31,10 @@ class TestEnvelopeShape:
             provider="anthropic", model="opus",
         )
         env = ExecutionTargetEnvelope(
-            lane=LaneType.CODING_AGENT, backend="kodo", executor="claude_cli",
+            lane=LaneType.CODING_AGENT, backend="team_executor", executor="claude_cli",
             runtime_binding=rb,
         )
-        assert env.backend == "kodo"
+        assert env.backend == "team_executor"
         assert env.executor == "claude_cli"
         assert env.runtime_binding.model == "opus"
 
@@ -51,15 +51,15 @@ class TestEnvelopeShape:
 class TestLaneDecisionAdditive:
     def test_decision_with_envelope_serializes(self):
         env = ExecutionTargetEnvelope(
-            lane=LaneType.CODING_AGENT, backend="kodo", executor="claude_cli",
+            lane=LaneType.CODING_AGENT, backend="team_executor", executor="claude_cli",
         )
         ld = LaneDecision(
             decision_id="d", proposal_id="p",
-            lane=LaneType.CODING_AGENT, executor="claude_cli", backend="kodo",
+            lane=LaneType.CODING_AGENT, executor="claude_cli", backend="team_executor",
             execution_target=env,
         )
         payload = ld.to_dict()
-        assert payload["execution_target"]["backend"] == "kodo"
+        assert payload["execution_target"]["backend"] == "team_executor"
         validate_contract("lane_decision", payload)
 
     def test_decision_without_envelope_still_validates(self):
@@ -80,7 +80,7 @@ class TestLaneDecisionAdditive:
 class TestRequestAdditive:
     def test_request_with_envelope_validates(self):
         env = ExecutionTargetEnvelope(
-            lane=LaneType.CODING_AGENT, backend="kodo", executor="claude_cli",
+            lane=LaneType.CODING_AGENT, backend="team_executor", executor="claude_cli",
         )
         req = ExecutionRequest(
             request_id="r", proposal_id="p", lane_decision_id="d",
@@ -89,16 +89,16 @@ class TestRequestAdditive:
         )
         payload = req.to_dict()
         validate_contract("execution_request", payload)
-        assert payload["execution_target"]["backend"] == "kodo"
+        assert payload["execution_target"]["backend"] == "team_executor"
 
     def test_envelope_inside_request_keeps_legacy_fields_too(self):
         env = ExecutionTargetEnvelope(
-            lane=LaneType.CODING_AGENT, backend="kodo", executor="claude_cli",
+            lane=LaneType.CODING_AGENT, backend="team_executor", executor="claude_cli",
         )
         req = ExecutionRequest(
             request_id="r", proposal_id="p", lane_decision_id="d",
             lane=LaneType.CODING_AGENT, scope="s",
-            executor="claude_cli", backend="kodo",
+            executor="claude_cli", backend="team_executor",
             execution_target=env,
         )
         # Both legacy fields and envelope coexist; consumer chooses

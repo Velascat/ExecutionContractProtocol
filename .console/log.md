@@ -79,3 +79,7 @@ truth; pre-push catches regressions before they hit GitHub.
 ## 2026-05-10 — Custodian pre-push command resolution
 
 - Updated the pre-push guard to prefer system `custodian-multi`, with repo venv and sibling Custodian venv fallbacks.
+
+## 2026-05-19 — ADR 0006 Phase 5: rename ExecutorRuntime → CoreRunner in CxRP docs
+
+docs/integrations/operations_center.md updated.

@@ -4,7 +4,7 @@
 
 A RuntimeBinding answers *what powers the executor* — CLI subscription,
 local model server, hosted API, container, human, or backend default.
-The kind is orthogonal to the executor (`kodo`, `archon`) and to the
+The kind is orthogonal to the executor (`team_executor`, `dag_executor`) and to the
 lane (`coding_agent`, etc.).
 
 `selection_mode` records *who decided* the runtime — the backend's

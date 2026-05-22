@@ -63,7 +63,7 @@ Current revision: **v0.2** (active). Frozen prior revision: **v0.1** (retained o
 
 ### Layered vocabulary
 
-`lane` is an abstract category (`coding_agent`, `review_agent`, ...). `executor` (e.g. `claude_cli`) and `backend` (e.g. `kodo`) are open strings at the envelope level — consuming systems layer their own typed constraints internally.
+`lane` is an abstract category (`coding_agent`, `review_agent`, ...). `executor` (e.g. `claude_cli`) and `backend` (e.g. `team_executor`) are open strings at the envelope level — consuming systems layer their own typed constraints internally.
 
 ## Repository Layout
 

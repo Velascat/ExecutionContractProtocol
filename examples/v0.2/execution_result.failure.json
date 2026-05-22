@@ -3,7 +3,7 @@
   "contract_kind": "execution_result",
   "result_id": "ers-002",
   "created_at": "2026-04-28T00:06:00Z",
-  "metadata": {"executor": "claude_cli", "backend": "kodo"},
+  "metadata": {"executor": "claude_cli", "backend": "team_executor"},
   "request_id": "erq-002",
   "ok": false,
   "status": "failed",

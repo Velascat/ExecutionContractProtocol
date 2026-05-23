@@ -83,3 +83,7 @@ truth; pre-push catches regressions before they hit GitHub.
 ## 2026-05-19 — ADR 0006 Phase 5: rename ExecutorRuntime → CoreRunner in CxRP docs
 
 docs/integrations/operations_center.md updated.
+
+## 2026-05-23 — Standardize pre-push hook
+
+- Updated `.hooks/pre-push` to the auto-discovering boundary-artifact variant (auto-locates PrivateManifest/dist artifact; extra custodian-multi fallback path).

@@ -9,6 +9,14 @@ tests_root: tests
 audit:
   reconcile_enforce: true
 
+  # `reconcile_enforce` is a core Custodian R1/R2 detector key
+  # (audit_kit/detectors/reconcile.py) but is not yet in custodian-doctor's
+  # _KNOWN_AUDIT_KEYS allowlist, so --strict flags it as an "unknown audit
+  # key". Declaring it here via the supported plugin_audit_keys escape hatch
+  # marks it as intentional until the upstream allowlist catches up.
+  plugin_audit_keys:
+    - reconcile_enforce
+
   cross_repo:
     platform_manifest_repo: ../PlatformManifest
 

@@ -3,6 +3,12 @@
 _Chronological continuity log. Decisions, stop points, what changed and why._
 _Not a task tracker — that's backlog.md. Keep entries concise and dated._
 
+- 2026-06-04 — Console reconciliation (scrub + enforce): genericized scrub-target
+  private-repo identifiers in two `.console/log.md` Stop Points entries to "a private
+  downstream repo"; set `audit.reconcile_enforce: true` in `.custodian/config.yaml`.
+  No prune (log under 400 lines). git grep for scrub-target names on tracked files
+  is now empty.
+
 - 2026-05-19 — Removed remaining live kodo/archon references from src and tests.
   Updated runtime.py docstring (kodo/archon → team_executor/dag_executor). Updated
   test_evidence.py fixture (archon_workflow_id → dag_executor_workflow_id). 75 tests pass.
@@ -18,7 +24,7 @@ _Not a task tracker — that's backlog.md. Keep entries concise and dated._
 
 ## Stop Points
 
-- Wire Custodian B1 privacy block (2026-05-08, on `chore/wire-b1-privacy-block`): Added top-level `privacy:` block to `.custodian/config.yaml` listing `VideoFoundry` and `videofoundry` as banned literals. B1 reports zero leaks on the public surface — defaults exclude operator-private workspaces, history docs, and the config file itself, so the block is purely declarative for now and acts as a forward guard against future leaks.
+- Wire Custodian B1 privacy block (2026-05-08, on `chore/wire-b1-privacy-block`): Added top-level `privacy:` block to `.custodian/config.yaml` listing a private downstream repo's identifiers (canonical + snake_case forms) as banned literals. B1 reports zero leaks on the public surface — defaults exclude operator-private workspaces, history docs, and the config file itself, so the block is purely declarative for now and acts as a forward guard against future leaks.
 
 - integrations/ docs refreshed (2026-05-07, on `main`): The three thin (5-line) integration stubs were rewritten with concrete details: which contracts cross which boundary, how each consumer uses them, schema_version pinning, and links to relevant consumer-side docs. operations_center.md now describes the cxrp_mapper.py bridge between OC's internal Pydantic mirror and canonical CxRP types. switchboard.md clarifies that RoutingPlan is SB-specific (not a CxRP type). operator_console.md explains the read-only file-based indirection (no Python coupling).
 
@@ -44,7 +50,7 @@ _Not a task tracker — that's backlog.md. Keep entries concise and dated._
 
 - Wire cross_repo config (2026-05-08, on chore/wire-cross-repo-config): Added `audit.cross_repo.platform_manifest_repo: ../PlatformManifest` to `.custodian/config.yaml`. Enables X1/X2/X3 detectors; live run shows 0 findings.
 
-- Wire Custodian B1 privacy block (2026-05-08, on `chore/wire-b1-privacy-block`): Added top-level `privacy:` block to `.custodian/config.yaml` listing `VideoFoundry` and `videofoundry` as banned literals. B1 reports zero leaks on the public surface — defaults exclude operator-private workspaces, history docs, and the config file itself, so the block is purely declarative for now and acts as a forward guard against future leaks.
+- Wire Custodian B1 privacy block (2026-05-08, on `chore/wire-b1-privacy-block`): Added top-level `privacy:` block to `.custodian/config.yaml` listing a private downstream repo's identifiers (canonical + snake_case forms) as banned literals. B1 reports zero leaks on the public surface — defaults exclude operator-private workspaces, history docs, and the config file itself, so the block is purely declarative for now and acts as a forward guard against future leaks.
 
 _(none)_
 
